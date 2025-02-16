@@ -482,7 +482,7 @@ SubmitButton.MouseButton1Click:Connect(function()
         wait(0.5)
         KeySystemGui:Destroy()
         
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/iOKAK666/X-HUB/refs/heads/main/New%20Text%20Document%20(3).txt?token=GHSAT0AAAAAAC6Z324QQ55VK3Z7CW3IVDUGZ5RUBHQ"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/all%20map"))()
         
     else
         -- Error 
