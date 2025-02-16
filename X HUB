@@ -1,533 +1,171 @@
--- Services
+local GKey = "XHUB-FREE" -- change to whatever
+local TextLabelText1 = "X HUB : Key System" -- change to whatever
+local TextLabelText2 = "Join Discord! .gg/d8TMBdvxdJ" -- change to whatever!
+local TextFontAll = "FredokaOne" -- Enter Any Font!
+
+-- This will only load the script, not execute it.
+local executeScript = loadstring(game:HttpGet(('https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/all%20map'),true))
+
+-- Tween Service
 local TweenService = game:GetService("TweenService")
-local Players = game:GetService("Players")
-local Lighting = game:GetService("Lighting")
-local GuiService = game:GetService("GuiService")
 
--- Configuration
-local CONFIG = {
-    DISCORD_LINK = "https://discord.gg/d8TMBdvxdJ", -- Replace with your Discord (prety self-explanatory)
-    WEBSITE_LINK = "https://discord.gg/d8TMBdvxdJ",       -- Replace with your website (pretty self-explanatory)
-    TITLE = "X HUB Key Access",
-    VERSION = "v1.5.0",
-    LOGO_ID = "rbxassetid://6034687957"            -- Replace with your logo UwU
-}
+-- GUI Creation
+local KeySystem = Instance.new("ScreenGui")
+local KeyMain = Instance.new("Frame")
+local KeyEnter = Instance.new("TextBox")
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
+local Text1 = Instance.new("TextLabel")
+local Text2 = Instance.new("TextLabel")
 
--- Color Scheme and everything :3
-local COLORS = {
-    Primary = Color3.fromRGB(13, 17, 23),        -- Dark background
-    Secondary = Color3.fromRGB(47, 54, 95),      -- Dark purple accent
-    Accent = Color3.fromRGB(88, 101, 242),       -- Discord accent
-    Text = Color3.fromRGB(255, 255, 255),        -- Pure white text
-    TextDim = Color3.fromRGB(171, 178, 191),     -- Dimmed text
-    Success = Color3.fromRGB(35, 165, 89),       -- Success green
-    Error = Color3.fromRGB(237, 66, 69),         -- Error red
-    InputBg = Color3.fromRGB(24, 25, 28),        -- Input background
-    CardBg = Color3.fromRGB(32, 34, 37),         -- Card background
-    Gradient1 = Color3.fromRGB(47, 49, 54),      -- Gradient start
-    Gradient2 = Color3.fromRGB(52, 55, 60),      -- Gradient end
-    Discord = Color3.fromRGB(88, 101, 242),      -- Discord brand color
-    Website = Color3.fromRGB(59, 130, 246)       -- Website button color
-}
+-- Properties for KeySystem
+KeySystem.Name = "KeySystem"
+KeySystem.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+KeySystem.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-local ValidKeys = {
-    "XHUB-2025-PREMIUM",
-	"XHUB-2025-FREE",
-    "XHUB-KEY-ADMIN"
-}
+-- Properties for KeyMain
+KeyMain.Name = "KeyMain"
+KeyMain.Parent = KeySystem
+KeyMain.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+KeyMain.BorderColor3 = Color3.fromRGB(0, 0, 0)
+KeyMain.BorderSizePixel = 0
+KeyMain.Position = UDim2.new(0.37667945, 0, 0.385529906, 0)
+KeyMain.Size = UDim2.new(0, 324, 0, 133)
+KeyMain.Active = true
+KeyMain.Draggable = true
 
--- Utility 
-local function OpenURL(url)
-    if syn and syn.request then
-        syn.request({
-            Url = url,
-            Method = "GET"
-        })
-    elseif http and http.request then
-        http.request({
-            Url = url,
-            Method = "GET"
-        })
-    else
-        setclipboard(url)
-    end
-end
+-- Properties for KeyEnter
+KeyEnter.Name = "KeyEnter"
+KeyEnter.Parent = KeyMain
+KeyEnter.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+KeyEnter.BorderColor3 = Color3.fromRGB(0, 0, 0)
+KeyEnter.BorderSizePixel = 0
+KeyEnter.Position = UDim2.new(0.191307724, 0, 0.651018858, 0)
+KeyEnter.Size = UDim2.new(0, 200, 0, 38)
+KeyEnter.Font = Enum.Font[TextFontAll]
+KeyEnter.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+KeyEnter.PlaceholderText = "Enter You Key Here!"
+KeyEnter.Text = ""
+KeyEnter.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyEnter.TextSize = 14.000
+KeyEnter.TextStrokeTransparency = 0.000
+KeyEnter.TextWrapped = true
 
--- ScreenGui 
-local KeySystemGui = Instance.new("ScreenGui")
-KeySystemGui.Name = "ModernKeySystemGui"
-KeySystemGui.ResetOnSpawn = false
-KeySystemGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+UICorner.CornerRadius = UDim.new(0, 22)
+UICorner.Parent = KeyEnter
 
-if syn and syn.protect_gui then
-    syn.protect_gui(KeySystemGui)
-    KeySystemGui.Parent = game:GetService("CoreGui")
-elseif gethui then
-    KeySystemGui.Parent = gethui()
-else
-    KeySystemGui.Parent = game:GetService("CoreGui")
-end
+UICorner_2.CornerRadius = UDim.new(0, 22)
+UICorner_2.Parent = KeyMain
 
--- Background 
-local Background = Instance.new("Frame")
-Background.Name = "Background"
-Background.Size = UDim2.new(1, 0, 1, 0)
-Background.Position = UDim2.new(0, 0, 0, 0)
-Background.BackgroundColor3 = COLORS.Primary
-Background.BackgroundTransparency = 1
-Background.BorderSizePixel = 0
-Background.ZIndex = 0
-Background.Parent = KeySystemGui
+-- Properties for Text1
+Text1.Name = "Text1"
+Text1.Parent = KeyMain
+Text1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text1.BackgroundTransparency = 1.000
+Text1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Text1.BorderSizePixel = 0
+Text1.Position = UDim2.new(0, 0, 0.05511811, 0)
+Text1.Size = UDim2.new(0, 324, 0, 27)
+Text1.Font = Enum.Font[TextFontAll]
+Text1.Text = TextLabelText1
+Text1.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text1.TextScaled = true
+Text1.TextSize = 14.000
+Text1.TextStrokeTransparency = 0.000
+Text1.TextWrapped = true
 
-local TopCoverage = Instance.new("Frame")
-TopCoverage.Name = "TopCoverage"
-TopCoverage.Size = UDim2.new(1, 0, 1, 100)
-TopCoverage.Position = UDim2.new(0, 0, -0.1, 0)
-TopCoverage.BackgroundColor3 = COLORS.Primary
-TopCoverage.BackgroundTransparency = 1
-TopCoverage.BorderSizePixel = 0
-TopCoverage.ZIndex = 0
-TopCoverage.Parent = Background
+-- Properties for Text2
+Text2.Name = "Text2"
+Text2.Parent = KeyMain
+Text2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text2.BackgroundTransparency = 1.000
+Text2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Text2.BorderSizePixel = 0
+Text2.Position = UDim2.new(0, 0, 0.352554679, 0)
+Text2.Size = UDim2.new(0, 324, 0, 27)
+Text2.Font = Enum.Font[TextFontAll]
+Text2.Text = TextLabelText2
+Text2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Text2.TextScaled = true
+Text2.TextSize = 14.000
+Text2.TextStrokeTransparency = 0.000
+Text2.TextWrapped = true
 
-local BlurEffect = Instance.new("BlurEffect")
-BlurEffect.Size = 0
-BlurEffect.Parent = Lighting
+-- Fade in function
+KeyMain.BackgroundTransparency = 1
+Text1.TextTransparency = 1
+Text2.TextTransparency = 1
+KeyEnter.BackgroundTransparency = 1
 
--- Main Container
-local MainContainer = Instance.new("Frame")
-MainContainer.Name = "MainContainer"
-MainContainer.Size = UDim2.new(0, 380, 0, 520) -- Increased height for social buttons
-MainContainer.Position = UDim2.new(0.5, -190, -0.5, -260)
-MainContainer.BackgroundColor3 = COLORS.CardBg
-MainContainer.BackgroundTransparency = 0
-MainContainer.BorderSizePixel = 0
-MainContainer.Parent = KeySystemGui
+-- Tween Creation for Fade-In
+local fadeInInfo = TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local KeyMainGoalsFadeIn = { BackgroundTransparency = 0 }
+local KeyMainTweenFadeIn = TweenService:Create(KeyMain, fadeInInfo, KeyMainGoalsFadeIn)
 
-local Corner = Instance.new("UICorner")
-Corner.CornerRadius = UDim.new(0, 20)
-Corner.Parent = MainContainer
+local textGoalsFadeIn = { TextTransparency = 0 }
+local Text1TweenFadeIn = TweenService:Create(Text1, fadeInInfo, textGoalsFadeIn)
+local Text2TweenFadeIn = TweenService:Create(Text2, fadeInInfo, textGoalsFadeIn)
 
-local Shadow = Instance.new("ImageLabel")
-Shadow.Size = UDim2.new(1, 50, 1, 50)
-Shadow.Position = UDim2.new(0, -25, 0, -25)
-Shadow.BackgroundTransparency = 1
-Shadow.Image = "rbxassetid://5554236805"
-Shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-Shadow.ImageTransparency = 0.8
-Shadow.Parent = MainContainer
+local KeyEnterGoalsFadeIn = { BackgroundTransparency = 0.75 }
+local KeyEnterTweenFadeIn = TweenService:Create(KeyEnter, fadeInInfo, KeyEnterGoalsFadeIn)
 
--- Gradient
-local GradientFrame = Instance.new("Frame")
-GradientFrame.Size = UDim2.new(1, 0, 1, 0)
-GradientFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-GradientFrame.BorderSizePixel = 0
-GradientFrame.Parent = MainContainer
+-- Play the fade-in Tweens
+KeyMainTweenFadeIn:Play()
+Text1TweenFadeIn:Play()
+Text2TweenFadeIn:Play()
+KeyEnterTweenFadeIn:Play()
 
-local Gradient = Instance.new("UIGradient")
-Gradient.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0, COLORS.Gradient1),
-    ColorSequenceKeypoint.new(1, COLORS.Gradient2)
-})
-Gradient.Transparency = NumberSequence.new({
-    NumberSequenceKeypoint.new(0, 0.93),
-    NumberSequenceKeypoint.new(1, 0.95)
-})
-Gradient.Rotation = 45
-Gradient.Parent = GradientFrame
+-- Key Checking Functionality
+local function checkKey()
+    local feedbackTweenInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local feedbackTween
 
--- Logo Container
-local LogoContainer = Instance.new("Frame")
-LogoContainer.Size = UDim2.new(0, 100, 0, 100)
-LogoContainer.Position = UDim2.new(0.5, -50, 0, 30)
-LogoContainer.BackgroundColor3 = COLORS.Secondary
-LogoContainer.BackgroundTransparency = 0.5
-LogoContainer.Parent = MainContainer
-
-local LogoCorner = Instance.new("UICorner")
-LogoCorner.CornerRadius = UDim.new(0.3, 0)
-LogoCorner.Parent = LogoContainer
-
-local LogoImage = Instance.new("ImageLabel")
-LogoImage.Size = UDim2.new(0.7, 0, 0.7, 0)
-LogoImage.Position = UDim2.new(0.15, 0, 0.15, 0)
-LogoImage.BackgroundTransparency = 1
-LogoImage.Image = CONFIG.LOGO_ID
-LogoImage.ImageColor3 = COLORS.Text
-LogoImage.Parent = LogoContainer
-
-local ShineEffect = Instance.new("Frame")
-ShineEffect.Size = UDim2.new(0.05, 0, 2, 0)
-ShineEffect.Position = UDim2.new(-0.1, 0, -0.5, 0)
-ShineEffect.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ShineEffect.BackgroundTransparency = 0.95
-ShineEffect.Rotation = 45
-ShineEffect.ZIndex = 2
-ShineEffect.Parent = LogoContainer
-
--- Title
-local Title = Instance.new("TextLabel")
-Title.Size = UDim2.new(1, 0, 0, 40)
-Title.Position = UDim2.new(0, 0, 0, 150)
-Title.BackgroundTransparency = 1
-Title.Text = CONFIG.TITLE
-Title.TextColor3 = COLORS.Text
-Title.TextSize = 32
-Title.Font = Enum.Font.GothamBold
-Title.Parent = MainContainer
-
--- Subtitle
-local Subtitle = Instance.new("TextLabel")
-Subtitle.Size = UDim2.new(0.8, 0, 0, 40)
-Subtitle.Position = UDim2.new(0.1, 0, 0, 190)
-Subtitle.BackgroundTransparency = 1
-Subtitle.Text = "Enter your key to continue"
-Subtitle.TextColor3 = COLORS.TextDim
-Subtitle.TextSize = 16
-Subtitle.Font = Enum.Font.GothamMedium
-Subtitle.Parent = MainContainer
-
--- Input Box
-local KeyBox = Instance.new("TextBox")
-KeyBox.Size = UDim2.new(0.85, 0, 0, 45)
-KeyBox.Position = UDim2.new(0.075, 0, 0, 250)
-KeyBox.BackgroundColor3 = COLORS.InputBg
-KeyBox.BackgroundTransparency = 0
-KeyBox.Text = ""
-KeyBox.PlaceholderText = "Enter your key..."
-KeyBox.TextColor3 = COLORS.Text
-KeyBox.PlaceholderColor3 = Color3.fromRGB(127, 131, 137)
-KeyBox.TextSize = 16
-KeyBox.Font = Enum.Font.GothamMedium
-KeyBox.ClearTextOnFocus = false
-KeyBox.Parent = MainContainer
-
-local KeyBoxCorner = Instance.new("UICorner")
-KeyBoxCorner.CornerRadius = UDim.new(0, 10)
-KeyBoxCorner.Parent = KeyBox
-
--- Submit Button
-local SubmitButton = Instance.new("TextButton")
-SubmitButton.Size = UDim2.new(0.85, 0, 0, 45)
-SubmitButton.Position = UDim2.new(0.075, 0, 0, 310)
-SubmitButton.BackgroundColor3 = COLORS.Accent
-SubmitButton.Text = "Verify Key"
-SubmitButton.TextColor3 = COLORS.Text
-SubmitButton.TextSize = 16
-SubmitButton.Font = Enum.Font.GothamBold
-SubmitButton.AutoButtonColor = false
-SubmitButton.Parent = MainContainer
-
-local ButtonCorner = Instance.new("UICorner")
-ButtonCorner.CornerRadius = UDim.new(0, 10)
-ButtonCorner.Parent = SubmitButton
-
--- Social Buttons Container
-local SocialContainer = Instance.new("Frame")
-SocialContainer.Size = UDim2.new(0.85, 0, 0, 100)
-SocialContainer.Position = UDim2.new(0.075, 0, 0, 370)
-SocialContainer.BackgroundTransparency = 1
-SocialContainer.Parent = MainContainer
-
--- Discord Button
-local DiscordButton = Instance.new("TextButton")
-DiscordButton.Size = UDim2.new(1, 0, 0, 45)
-DiscordButton.Position = UDim2.new(0, 0, 0, 0)
-DiscordButton.BackgroundColor3 = COLORS.Discord
-DiscordButton.Text = "Join Discord"
-DiscordButton.TextColor3 = COLORS.Text
-DiscordButton.TextSize = 16
-DiscordButton.Font = Enum.Font.GothamBold
-DiscordButton.AutoButtonColor = false
-DiscordButton.Parent = SocialContainer
-
-local DiscordCorner = Instance.new("UICorner")
-DiscordCorner.CornerRadius = UDim.new(0, 10)
-DiscordCorner.Parent = DiscordButton
-
--- Website Button
-local WebsiteButton = Instance.new("TextButton")
-WebsiteButton.Size = UDim2.new(1, 0, 0, 45)
-WebsiteButton.Position = UDim2.new(0, 0, 0, 55)
-WebsiteButton.BackgroundColor3 = COLORS.Website
-WebsiteButton.Text = "Visit Website"
-WebsiteButton.TextColor3 = COLORS.Text
-WebsiteButton.TextSize = 16
-WebsiteButton.Font = Enum.Font.GothamBold
-WebsiteButton.AutoButtonColor = false
-WebsiteButton.Parent = SocialContainer
-
-local WebsiteCorner = Instance.new("UICorner")
-WebsiteCorner.CornerRadius = UDim.new(0, 10)
-WebsiteCorner.Parent = WebsiteButton
-
--- Status Label
-local StatusLabel = Instance.new("TextLabel")
-StatusLabel.Size = UDim2.new(0.8, 0, 0, 30)
-StatusLabel.Position = UDim2.new(0.1, 0, 0, 480)
-StatusLabel.BackgroundTransparency = 1
-StatusLabel.Text = ""
-StatusLabel.TextColor3 = COLORS.TextDim
-StatusLabel.TextSize = 14
-StatusLabel.Font = Enum.Font.GothamMedium
-StatusLabel.Parent = MainContainer
-
--- Create Loading
-local LoadingSpinner = Instance.new("ImageLabel")
-LoadingSpinner.Size = UDim2.new(0, 30, 0, 30)
-LoadingSpinner.Position = UDim2.new(0.5, -15, 0, 320)
-LoadingSpinner.BackgroundTransparency = 1
-LoadingSpinner.Image = "rbxassetid://4612651645"
-LoadingSpinner.ImageColor3 = COLORS.Text
-LoadingSpinner.ImageTransparency = 1
-LoadingSpinner.Parent = MainContainer
-
--- Functions
-local function UpdateStatus(message, color)
-    TweenService:Create(StatusLabel, TweenInfo.new(0.3), {
-        TextTransparency = 1
-    }):Play()
-    
-    wait(0.3)
-    StatusLabel.Text = message
-    StatusLabel.TextColor3 = color
-    
-    TweenService:Create(StatusLabel, TweenInfo.new(0.3), {
-        TextTransparency = 0
-    }):Play()
-end
-
-local function AnimateSpinner()
-    LoadingSpinner.ImageTransparency = 0
-    local rotation = 0
-    while LoadingSpinner.ImageTransparency == 0 do
-        rotation = rotation + 30
-        TweenService:Create(LoadingSpinner, TweenInfo.new(0.2), {
-            Rotation = rotation
-        }):Play()
-        wait(0.2)
-    end
-end
-
-local function CreateButtonHoverEffect(button, defaultColor, hoverColor)
-    button.MouseEnter:Connect(function()
-        TweenService:Create(button, TweenInfo.new(0.3), {
-            BackgroundColor3 = hoverColor,
-            Size = button.Size + UDim2.new(0, 2, 0, 2)
-        }):Play()
-    end)
-
-    button.MouseLeave:Connect(function()
-        TweenService:Create(button, TweenInfo.new(0.3), {
-            BackgroundColor3 = defaultColor,
-            Size = button.Size - UDim2.new(0, 2, 0, 2)
-        }):Play()
-    end)
-end
-
-CreateButtonHoverEffect(SubmitButton, COLORS.Accent, Color3.fromRGB(71, 82, 196))
-CreateButtonHoverEffect(DiscordButton, COLORS.Discord, Color3.fromRGB(71, 82, 196))
-CreateButtonHoverEffect(WebsiteButton, COLORS.Website, Color3.fromRGB(45, 100, 190))
-
-local function CreateRipple(parent, x, y)
-    local Ripple = Instance.new("Frame")
-    Ripple.Position = UDim2.new(0, x, 0, y)
-    Ripple.Size = UDim2.new(0, 0, 0, 0)
-    Ripple.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Ripple.BackgroundTransparency = 0.6
-    Ripple.AnchorPoint = Vector2.new(0.5, 0.5)
-    Ripple.Parent = parent
-    
-    local RippleCorner = Instance.new("UICorner")
-    RippleCorner.CornerRadius = UDim.new(1, 0)
-    RippleCorner.Parent = Ripple
-    
-    local targetSize = UDim2.new(0, parent.AbsoluteSize.X * 2, 0, parent.AbsoluteSize.X * 2)
-    
-    TweenService:Create(Ripple, TweenInfo.new(0.5), {
-        Size = targetSize,
-        BackgroundTransparency = 1
-    }):Play()
-    
-    game:GetService("Debris"):AddItem(Ripple, 0.5)
-end
-
-TweenService:Create(Background, TweenInfo.new(0.5), {
-    BackgroundTransparency = 0.5
-}):Play()
-
-TweenService:Create(TopCoverage, TweenInfo.new(0.5), {
-    BackgroundTransparency = 0.5
-}):Play()
-
-TweenService:Create(MainContainer, TweenInfo.new(0.8, Enum.EasingStyle.Back), {
-    Position = UDim2.new(0.5, -190, 0.5, -260)
-}):Play()
-
-TweenService:Create(BlurEffect, TweenInfo.new(0.5), {
-    Size = 10
-}):Play()
-
-spawn(function()
-    while true do
-        TweenService:Create(ShineEffect, TweenInfo.new(2.5, Enum.EasingStyle.Sine), {
-            Position = UDim2.new(1.1, 0, -0.5, 0)
-        }):Play()
-        wait(2.5)
-        ShineEffect.Position = UDim2.new(-0.1, 0, -0.5, 0)
-        wait(4)
-    end
-end)
-
--- Socials 
-DiscordButton.MouseButton1Click:Connect(function()
-    OpenURL(CONFIG.DISCORD_LINK)
-    UpdateStatus("Discord invite copied to clipboard!", COLORS.Discord)
-end)
-
-WebsiteButton.MouseButton1Click:Connect(function()
-    OpenURL(CONFIG.WEBSITE_LINK)
-    UpdateStatus("Website link copied to clipboard!", COLORS.Website)
-end)
-
--- Key Input 
-KeyBox:GetPropertyChangedSignal("Text"):Connect(function()
-    local text = KeyBox.Text
-    text = text:gsub("%s+", "-") -- Replace spaces with dashes
-    text = text:upper() -- Convert to uppercase
-    if text ~= KeyBox.Text then
-        KeyBox.Text = text
-    end
-end)
-
--- Input Box 
-KeyBox.Focused:Connect(function()
-    TweenService:Create(KeyBox, TweenInfo.new(0.3), {
-        BackgroundTransparency = 0.1,
-        Size = UDim2.new(0.86, 0, 0, 46)
-    }):Play()
-end)
-
-KeyBox.FocusLost:Connect(function()
-    TweenService:Create(KeyBox, TweenInfo.new(0.3), {
-        BackgroundTransparency = 0,
-        Size = UDim2.new(0.85, 0, 0, 45)
-    }):Play()
-end)
-
--- Submit Button Handler 
-SubmitButton.MouseButton1Click:Connect(function()
-    -- Get mouse position for some effects and everything :D
-    local mouseX = game:GetService("UserInputService"):GetMouseLocation().X
-    local mouseY = game:GetService("UserInputService"):GetMouseLocation().Y
-    local buttonPosition = SubmitButton.AbsolutePosition
-    local rippleX = mouseX - buttonPosition.X
-    local rippleY = mouseY - buttonPosition.Y
-    
-    CreateRipple(SubmitButton, rippleX, rippleY)
-    
-    SubmitButton.Active = false
-    KeyBox.Active = false
-    DiscordButton.Active = false
-    WebsiteButton.Active = false
-    
-    -- Show loading and yea 
-    SubmitButton.Text = ""
-    LoadingSpinner.ImageTransparency = 0
-    spawn(AnimateSpinner)
-    
-    -- Verify key
-    local keyInput = KeyBox.Text
-    local isValid = false
-    
-    for _, validKey in ipairs(ValidKeys) do
-        if keyInput == validKey then
-            isValid = true
-            break
-        end
-    end
-    
-    wait(1.5)
-    LoadingSpinner.ImageTransparency = 1
-    
-    if isValid then
-        -- Success state
-        UpdateStatus("Key verified successfully!", COLORS.Success)
-        TweenService:Create(SubmitButton, TweenInfo.new(0.3), {
-            BackgroundColor3 = COLORS.Success,
-            Size = UDim2.new(0.85, 0, 0, 45)
-        }):Play()
-        SubmitButton.Text = "Success!"
+    if KeyEnter.Text == GKey then
+        print("Correct Key!")
         
-        
+        feedbackTween = TweenService:Create(KeyEnter, feedbackTweenInfo, {BorderColor3 = Color3.new(0, 1, 0)})
+        feedbackTween:Play()
+
+        feedbackTween.Completed:Connect(function()
+            KeyEnter.BorderColor3 = Color3.new(0, 0, 0) -- Reset to original after flashing
+        end)
+
         wait(1)
-        
-        -- Some more animations
-        TweenService:Create(BlurEffect, TweenInfo.new(0.5), {
-            Size = 0
-        }):Play()
-        
-        TweenService:Create(MainContainer, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
-            Position = UDim2.new(0.5, -190, 1.5, 0),
-            Size = UDim2.new(0, 380, 0, 0)
-        }):Play()
-        
-        TweenService:Create(Background, TweenInfo.new(0.5), {
-            BackgroundTransparency = 1
-        }):Play()
-        
-        TweenService:Create(TopCoverage, TweenInfo.new(0.5), {
-            BackgroundTransparency = 1
-        }):Play()
-        
-        wait(0.5)
-        KeySystemGui:Destroy()
-        
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/all%20map"))()
-        
+
+        executeScript()
+
+        local fadeOutInfo = TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+        local fadeOutGoals = { BackgroundTransparency = 1 }
+        local KeyMainFadeOut = TweenService:Create(KeyMain, fadeOutInfo, fadeOutGoals)
+        local Text1FadeOut = TweenService:Create(Text1, fadeOutInfo, { TextTransparency = 1 })
+        local Text2FadeOut = TweenService:Create(Text2, fadeOutInfo, { TextTransparency = 1 })
+        local KeyEnterFadeOut = TweenService:Create(KeyEnter, fadeOutInfo, { BackgroundTransparency = 1 })
+
+        KeyMainFadeOut:Play()
+        Text1FadeOut:Play()
+        Text2FadeOut:Play()
+        KeyEnterFadeOut:Play()
+
+        KeyMainFadeOut.Completed:Connect(function()
+            KeySystem:Destroy()
+        end)
+
     else
-        -- Error 
-        UpdateStatus("Invalid key! Please try again.", COLORS.Error)
-        TweenService:Create(SubmitButton, TweenInfo.new(0.3), {
-            BackgroundColor3 = COLORS.Error
-        }):Play()
-        SubmitButton.Text = "Invalid Key"
-        
-        -- Some extra animation
-        local originalPosition = MainContainer.Position
-        for i = 1, 3 do
-            TweenService:Create(MainContainer, TweenInfo.new(0.1), {
-                Position = originalPosition + UDim2.new(0, 10, 0, 0)
-            }):Play()
-            wait(0.1)
-            TweenService:Create(MainContainer, TweenInfo.new(0.1), {
-                Position = originalPosition - UDim2.new(0, 10, 0, 0)
-            }):Play()
-            wait(0.1)
-        end
-        
-        TweenService:Create(MainContainer, TweenInfo.new(0.1), {
-            Position = originalPosition
-        }):Play()
-        
-        -- Reset
+        print("Wrong Key!")
+
+        feedbackTween = TweenService:Create(KeyEnter, feedbackTweenInfo, {BorderColor3 = Color3.new(1, 0, 0)})
+        feedbackTween:Play()
+
+        feedbackTween.Completed:Connect(function()
+            KeyEnter.BorderColor3 = Color3.new(0, 0, 0)
+        end)
+
         wait(1)
-        TweenService:Create(SubmitButton, TweenInfo.new(0.3), {
-            BackgroundColor3 = COLORS.Accent
-        }):Play()
-        SubmitButton.Text = "Verify Key"
-        SubmitButton.Active = true
-        KeyBox.Active = true
-        DiscordButton.Active = true
-        WebsiteButton.Active = true
+    end
+end
+
+KeyEnter.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        checkKey()
     end
 end)
-
--- Cleanup
-KeySystemGui.Destroying:Connect(function()
-    if BlurEffect then
-        BlurEffect:Destroy()
-    end
-end)
-
-wait(1)
-UpdateStatus("Welcome! Please enter your key to continue.", COLORS.TextDim)
