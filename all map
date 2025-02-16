@@ -1,0 +1,35 @@
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local scripts = {
+    [18668065416] = "https://pastebin.com/raw/aZEuz2kv",--Bluerock
+    [16732694052] = "https://pastebin.com/raw/JJCZmDeh",--Fisch
+    [7215881810] = "https://pastebin.com/raw/aKXh46hq",--No limit punch
+    [16993432698] = "https://pastebin.com/raw/rfJTqDvA",--Impossible
+    [537413528] = "https://pastebin.com/raw/uCJbHAPA",--Build a boat
+    [7993293100] = "https://pastebin.com/raw/DGa3Fw97",--Tsunami
+	[8554378337] = "https://pastebin.com/raw/aAdWVeCH",--Weapon fighting
+	[9498006165] = "https://pastebin.com/raw/vyBV935w"--Tapping
+}
+
+local scriptURL = scripts[game.PlaceId]
+if scriptURL then
+    local success, response = pcall(function()
+        return game:HttpGet(scriptURL)
+    end)
+    
+    if success and response then
+        local runSuccess, errorMessage = pcall(function()
+            loadstring(response)()
+        end)
+        if runSuccess then
+            print("✅ สคริปต์ถูกรันสำเร็จ.")
+        else
+            warn("⚠️ เกิดข้อผิดพลาดในการรันสคริปต์: " .. errorMessage)
+        end
+    else
+        warn("❌ ไม่สามารถโหลดสคริปต์จาก URL ได้")
+    end
+else
+    LocalPlayer:Kick("🚫         Map Not Support!")
+end
