@@ -2,14 +2,14 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
 local scripts = {
-    [18668065416] = "https://pastebin.com/raw/aZEuz2kv",--Bluerock
-    [16732694052] = "https://pastebin.com/raw/JJCZmDeh",--Fisch
-    [7215881810] = "https://pastebin.com/raw/aKXh46hq",--No limit punch
-    [16993432698] = "https://pastebin.com/raw/rfJTqDvA",--Impossible
-    [537413528] = "https://pastebin.com/raw/uCJbHAPA",--Build a boat
-    [7993293100] = "https://pastebin.com/raw/DGa3Fw97",--Tsunami
-	[8554378337] = "https://pastebin.com/raw/aAdWVeCH",--Weapon fighting
-	[9498006165] = "https://pastebin.com/raw/vyBV935w"--Tapping
+    [18668065416] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/bluerock",--Bluerock
+    [16732694052] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Fisch",--Fisch
+    [7215881810] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/NO%20LIMIT%20STRONGEST%20PUNCH%20SIMULATOR",--No limit punch
+    [16993432698] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Impossible%20Squid%20Game!%20Glass%20Bridge%202",--Impossible
+    [537413528] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Build%20A%20Boat%20For%20Treasure",--Build a boat
+    [7993293100] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Tsunami%20Game",--Tsunami
+	[8554378337] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Weapon%20Fighting%20Simulator",--Weapon fighting
+	[9498006165] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Tapping%20Simulator!"--Tapping
 }
 
 local scriptURL = scripts[game.PlaceId]
