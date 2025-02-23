@@ -2,17 +2,8 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
 local scripts = {
-    [18668065416] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/bluerock",--Bluerock
-    [16732694052] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Fisch",--Fisch
-    [7215881810] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/NO%20LIMIT%20STRONGEST%20PUNCH%20SIMULATOR",--No limit punch
-    [16993432698] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Impossible%20Squid%20Game!%20Glass%20Bridge%202",--Impossible
-    [537413528] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Build%20A%20Boat%20For%20Treasure",--Build a boat
-    [7993293100] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Tsunami%20Game",--Tsunami
-	[8554378337] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Weapon%20Fighting%20Simulator",--Weapon fighting
-	[2753915549] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Blox%20Fruit",--BF 1
-	[4442272183] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Blox%20Fruit",--BF 2
-	[7449423635] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Blox%20Fruit",--BF 3
-	[9498006165] = "https://raw.githubusercontent.com/iOKAK666/name/refs/heads/main/Tapping%20Simulator!"--Tapping
+    [3956818381] = "https://raw.githubusercontent.com/iOKAK666/1Hz/refs/heads/main/NinjaLegens"--NinjaLegens
+
 }
 
 local scriptURL = scripts[game.PlaceId]
@@ -20,19 +11,3 @@ if scriptURL then
     local success, response = pcall(function()
         return game:HttpGet(scriptURL)
     end)
-    
-    if success and response then
-        local runSuccess, errorMessage = pcall(function()
-            loadstring(response)()
-        end)
-        if runSuccess then
-            print("✅ สคริปต์ถูกรันสำเร็จ.")
-        else
-            warn("⚠️ เกิดข้อผิดพลาดในการรันสคริปต์: " .. errorMessage)
-        end
-    else
-        warn("❌ ไม่สามารถโหลดสคริปต์จาก URL ได้")
-    end
-else
-    LocalPlayer:Kick("🚫         Map Not Support!")
-end
